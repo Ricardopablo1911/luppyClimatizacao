@@ -343,21 +343,19 @@
             font-size: 1.2rem;
         }
 
-        .about-image {
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            background: linear-gradient(135deg, #00d4ff, #0099cc);
-            min-height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+
 
         .about-image i {
             font-size: 8rem;
             color: rgba(255, 255, 255, 0.3);
         }
+
+        .about-image img {
+        width: 200px;  /* largura desejada */
+        height: auto;  /* mantém a proporção */
+        align-items: baseline;
+        }
+
 
         /* Contact Section */
         .contact {
