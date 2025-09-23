@@ -5,13 +5,18 @@
             box-sizing: border-box;
         }
 
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: #333;
             overflow-x: hidden;
         }
-
+        
+        .container img {
+        width: 100px; /* Define a largura da imagem */
+        height: auto;   /* ESSENCIAL: ajusta a altura automaticamente para não distorcer a imagem */
+        }
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -91,15 +96,32 @@
             width: 100%;
         }
 
+        /* --- Estilo Principal do Botão (para telas maiores) --- */
         .cta-button {
-            background: linear-gradient(135deg, #ff6b35, #f7931e);
-            color: white !important;
-            padding: 0.8rem 1.5rem;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        background: linear-gradient(135deg, #ff6b35, #f7931e);
+        color: white !important;
+        padding: 0.8rem 1.5rem; /* Padding original */
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+
+        /* ADICIONADO: Impede que o texto quebre em duas linhas dentro do botão */
+        white-space: nowrap; 
+        }
+
+        /* --- Estilo Responsivo (para telas menores) --- */
+
+        /* Aplica estes estilos APENAS quando a largura da tela for 768px ou menos */
+        @media (max-width: 768px) {
+        .cta-button {
+            /* Reduz o padding para o botão ficar mais compacto */
+            padding: 0.6rem 1rem;
+
+            /* Opcional: Reduz um pouco a fonte para economizar mais espaço */
+            font-size: 0.9rem;
+        }
         }
 
         .cta-button:hover {
@@ -350,10 +372,40 @@
             color: rgba(255, 255, 255, 0.3);
         }
 
+        /* --- Estilo Principal (para telas maiores: desktop, tablet) --- */
+        .about-image {
+        display: flex;             /* Ativa o Flexbox */
+        justify-content: center;   /* Alinha horizontalmente no centro */
+        align-items: center;       /* Alinha verticalmente no centro */
+        gap: 40px;                 /* Espaço entre as imagens */
+        flex-wrap: wrap;           /* PERMITE que os itens quebrem para a próxima linha se não houver espaço */
+        }
+
+        /* Usando a abordagem de "caixas uniformes" que é ótima para logos */
         .about-image img {
-        width: 200px;  /* largura desejada */
-        height: auto;  /* mantém a proporção */
-        align-items: baseline;
+        max-width: 200px; /* Largura máxima */
+        width: 100%;      /* Faz a imagem ser flexível dentro do seu espaço */
+        height: 200px;    /* Altura fixa da "caixa" */
+        object-fit: contain; /* Garante que a imagem caiba na caixa sem distorcer */
+        }
+
+
+        /* --- Estilo Responsivo (para telas menores: mobile) --- */
+
+        /* Aplica estes estilos APENAS quando a largura da tela for 600px ou menos */
+        @media (max-width: 600px) {
+        .about-image {
+            /* Muda a direção do flex para coluna */
+            flex-direction: column; 
+            
+            /* Reduz o espaço entre as imagens na visualização mobile */
+            gap: 25px; 
+        }
+
+        .about-image img {
+            /* Ajusta o tamanho das logos para a tela menor, se necessário */
+            max-width: 180px; 
+        }
         }
 
 
