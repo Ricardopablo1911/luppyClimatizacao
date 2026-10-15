@@ -153,91 +153,57 @@ document.querySelector('.contact-form form').addEventListener('submit', function
         // Initialize floating elements
         createFloatingElements();
 
-        // Mobile menu toggle (for future enhancement)
-        function createMobileMenu() {
-            const nav = document.querySelector('nav');
-            const navLinks = document.querySelector('.nav-links');
-            
-            // Create mobile menu button
-            const mobileMenuBtn = document.createElement('button');
-            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-            mobileMenuBtn.style.cssText = `
-                display: none;
-                background: none;
-                border: none;
-                color: white;
-                font-size: 1.5rem;
-                cursor: pointer;
-                padding: 10px;
-                @media (max-width: 768px) {
-                    display: block;
-                }
-            `;
-            
-            nav.appendChild(mobileMenuBtn);
-            
-            // Add mobile styles for nav links
-            const mobileStyles = document.createElement('style');
-            mobileStyles.textContent = `
-                @media (max-width: 768px) {
-                    .nav-links {
-                        position: fixed;
-                        top: 70px;
-                        right: -100%;
-                        width: 300px;
-                        height: calc(100vh - 70px);
-                        background: rgba(13, 31, 45, 0.98);
-                        backdrop-filter: blur(10px);
-                        flex-direction: column;
-                        justify-content: flex-start;
-                        align-items: stretch;
-                        padding: 2rem;
-                        transition: right 0.3s ease;
-                        border-left: 1px solid rgba(255, 255, 255, 0.1);
-                    }
-                    
-                    .nav-links.active {
-                        right: 0;
-                    }
-                    
-                    .nav-links li {
-                        margin-bottom: 1rem;
-                    }
-                    
-                    .nav-links a {
-                        display: block;
-                        padding: 15px 0;
-                        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-                    }
-                    
-                    .mobile-menu-btn {
-                        display: block !important;
-                    }
-                }
-            `;
-            document.head.appendChild(mobileStyles);
-            
-            // Mobile menu toggle functionality
-            mobileMenuBtn.addEventListener('click', function() {
-                navLinks.classList.toggle('active');
-                const icon = this.querySelector('i');
+        // Mobile menu functionality
+        function initMobileMenu() {
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const navLinks = document.getElementById('nav-links');
+            const overlay = document.getElementById('menu-overlay');
+
+            if (!mobileMenuBtn || !navLinks) return;
+
+            function openMenu() {
+                navLinks.classList.add('active');
+                if (overlay) overlay.classList.add('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-times"></i>';
+                mobileMenuBtn.setAttribute('aria-expanded', 'true');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeMenu() {
+                navLinks.classList.remove('active');
+                if (overlay) overlay.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            }
+
+            mobileMenuBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
                 if (navLinks.classList.contains('active')) {
-                    icon.className = 'fas fa-times';
+                    closeMenu();
                 } else {
-                    icon.className = 'fas fa-bars';
+                    openMenu();
                 }
             });
-            
-            // Close mobile menu when clicking on links
+
+            if (overlay) {
+                overlay.addEventListener('click', closeMenu);
+            }
+
+            // Close mobile menu when clicking on any nav link
             navLinks.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    navLinks.classList.remove('active');
-                    mobileMenuBtn.querySelector('i').className = 'fas fa-bars';
-                });
+                link.addEventListener('click', closeMenu);
+            });
+
+            // Close on escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+                    closeMenu();
+                }
             });
         }
         
-        createMobileMenu();
+        initMobileMenu();
 
         // Add scroll progress indicator
         function createScrollProgress() {
@@ -266,12 +232,7 @@ document.querySelector('.contact-form form').addEventListener('submit', function
 
         // Add loading animation
         window.addEventListener('load', function() {
-            document.body.style.opacity = '0';
-            document.body.style.transition = 'opacity 0.5s ease';
-            
-            setTimeout(() => {
-                document.body.style.opacity = '1';
-            }, 100);
+            document.body.style.opacity = '1';
         });
 
         // Add testimonials data (for future enhancement)
