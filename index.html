@@ -5,21 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Luppy Climatização | Instalação e Manutenção de Ar Condicionado</title>
-    <meta name="description" content="A Luppy Climatização é especialista em instalação, manutenção e limpeza de ar condicionado em Jaraguá do Sul e região. Solicite um orçamento agora mesmo!">
-    <meta name="keywords" content="ar condicionado Jaraguá do Sul, instalação de ar condicionado, manutenção de ar condicionado, limpeza de ar condicionado, climatização SC">
+    <meta name="description" content="A Luppy Climatização é assistência técnica autorizada Agratto, TCL, Elgin, Philco, Britânia e Colormaq em Jaraguá do Sul e região. Solicite seu orçamento!">
+    <meta name="keywords" content="ar condicionado Jaraguá do Sul, instalação de ar condicionado, manutenção de ar condicionado, limpeza de ar condicionado, climatização SC, autorizada Agratto, autorizada TCL, autorizada Elgin, autorizada Philco, autorizada Britânia, autorizada Colormaq">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
-     <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
     <!-- Header -->
     <header>
         <nav class="container">
-            <img src= "./imagens/apenas_logo-removebg-preview.png" alt= "Logotipo da Luppy">
             <a href="#" class="logo">
-                Luppy Climatização
+                <img src="./imagens/apenas_logo-removebg-preview.png" alt="Logotipo da Luppy">
+                <span>Luppy Climatização</span>
             </a>
-            <ul class="nav-links">
+            <ul class="nav-links" id="nav-links">
                 <li><a href="#inicio">Início</a></li>
                 <li><a href="#vendas">Vendas</a></li>
                 <li><a href="#servicos">Serviços</a></li>
@@ -28,7 +29,11 @@
                 <li><a href="#contato">Contato</a></li>
                 <li><a href="#contato" class="cta-button">Solicitar Orçamento</a></li>
             </ul>
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Abrir menu de navegação">
+                <i class="fas fa-bars"></i>
+            </button>
         </nav>
+        <div class="menu-overlay" id="menu-overlay"></div>
     </header>
 
     <!-- Hero Section -->
@@ -187,23 +192,105 @@
         </div>
     </section>
 
-    <!-- Autorizados Section -->
-    <section id="autorizadas" class="aturorizadas">
+    <!-- Postos Autorizados Section -->
+    <section id="autorizadas" class="autorizadas">
         <div class="container">
-            <div class="autorizadas-content">
-                <div class="autorizadas-text fade-in">
-                    <h2>Postos Autorizados</h2>
-                    <p>Somos uma assistência técnica autorizada das seguintes marcas:</p>
+            <div class="section-title fade-in">
+                <h2>Postos Autorizados</h2>
+                <p>Somos assistência técnica autorizada das principais fabricantes do mercado, oferecendo atendimento padrão de fábrica, peças originais e garantia em todos os serviços.</p>
+            </div>
 
-                    <div class="autorizadas-features">
-                        
+            <!-- Tópicos de Destaque -->
+            <div class="autorizadas-highlights fade-in">
+                <div class="highlight-item">
+                    <div class="highlight-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div>
+                        <h4>Reparo em Garantia e Pós-Garantia</h4>
+                        <p>Atendimento autorizado direto de fábrica para reparar seu equipamento dentro ou fora do período de garantia.</p>
                     </div>
                 </div>
 
-                <div class="about-image fade-in">
-                    <img src= "./imagens/agratto1.jpg" alt= "Logotipo da empresa Agratto">
-                    <img src= "./imagens/brand-tcl.png" alt= "Logotipo da empresa TCL">
-                    <img src= "./imagens/elgin-logo-0-1.png" alt= "Logotipo da empresa Elgin">
+                <div class="highlight-item">
+                    <div class="highlight-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div>
+                        <h4>Instalação que Não Perde a Garantia</h4>
+                        <p>Instalação profissional executada rigorosamente conforme os padrões dos fabricantes, preservando 100% da sua garantia.</p>
+                    </div>
+                </div>
+
+                <div class="highlight-item">
+                    <div class="highlight-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <div>
+                        <h4>Peças 100% Originais</h4>
+                        <p>Reposição com peças e componentes genuínos fornecidos direto das fábricas para máxima eficiência e durabilidade.</p>
+                    </div>
+                </div>
+
+                <div class="highlight-item">
+                    <div class="highlight-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <div>
+                        <h4>Técnicos Treinados de Fábrica</h4>
+                        <p>Profissionais capacitados e certificados pelas próprias marcas para diagnósticos precisos e manutenção de alto padrão.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grid com as 6 Marcas Autorizadas -->
+            <div class="marcas-grid-autorizadas fade-in">
+                <div class="marca-card" title="Agratto - Assistência Técnica Autorizada">
+                    <div class="marca-badge">Autorizada</div>
+                    <div class="marca-img-wrapper">
+                        <img src="./imagens/agratto-clean.png" alt="Logotipo da empresa Agratto">
+                    </div>
+                    <span class="marca-name">Agratto</span>
+                </div>
+
+                <div class="marca-card" title="TCL - Assistência Técnica Autorizada">
+                    <div class="marca-badge">Autorizada</div>
+                    <div class="marca-img-wrapper">
+                        <img src="./imagens/brand-tcl-clean.png" alt="Logotipo da empresa TCL">
+                    </div>
+                    <span class="marca-name">TCL</span>
+                </div>
+
+                <div class="marca-card" title="Elgin - Assistência Técnica Autorizada">
+                    <div class="marca-badge">Autorizada</div>
+                    <div class="marca-img-wrapper">
+                        <img src="./imagens/elgin-logo-clean.png" alt="Logotipo da empresa Elgin">
+                    </div>
+                    <span class="marca-name">Elgin</span>
+                </div>
+
+                <div class="marca-card" title="Philco - Assistência Técnica Autorizada">
+                    <div class="marca-badge">Autorizada</div>
+                    <div class="marca-img-wrapper">
+                        <img src="./imagens/philco-logo.svg" alt="Logotipo da empresa Philco">
+                    </div>
+                    <span class="marca-name">Philco</span>
+                </div>
+
+                <div class="marca-card" title="Britânia - Assistência Técnica Autorizada">
+                    <div class="marca-badge">Autorizada</div>
+                    <div class="marca-img-wrapper">
+                        <img src="./imagens/britania-logo.svg" alt="Logotipo da empresa Britânia">
+                    </div>
+                    <span class="marca-name">Britânia</span>
+                </div>
+
+                <div class="marca-card" title="Colormaq - Assistência Técnica Autorizada">
+                    <div class="marca-badge">Autorizada</div>
+                    <div class="marca-img-wrapper">
+                        <img src="./imagens/colormaq-logo.svg" alt="Logotipo da empresa Colormaq">
+                    </div>
+                    <span class="marca-name">Colormaq</span>
                 </div>
             </div>
         </div>
